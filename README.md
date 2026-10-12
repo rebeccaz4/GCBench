@@ -93,7 +93,7 @@ python3 /home/user/GCBench/scripts/install_skills.py --condition repaired
 
 Original skills are pinned to HKUDS/CLI-Anything commit [`1bb1010`](https://github.com/HKUDS/CLI-Anything/commit/1bb1010de4911f5c970091feccc5f8fb13301b2b), dated **2026-04-28**. The bundled repaired implementations are kept in a separate directory. Source evidence and file fingerprints are recorded in [`skills/provenance.json`](skills/provenance.json) and [`skills/manifest.json`](skills/manifest.json).
 
-The installer creates `/home/user/CLI-Anything`, installs that condition's harnesses, exposes its skill documentation to both agents, and records the condition. Commit the configured containers as `gcbench-cli-original:latest` and `gcbench-cli-repaired:latest`. Detailed preparation, protocol settings, and reproduction boundaries are in [`docs/reproduction.md`](docs/reproduction.md).
+The installer creates `/home/user/CLI-Anything`, installs that condition's harnesses, exposes its skill documentation to both agents, and records the condition. Commit the configured containers as `gcbench-cli-original:latest` and `gcbench-cli-repaired:latest`.
 
 ```bash
 # Main CLI condition: all 340 tasks
@@ -133,7 +133,6 @@ task_generator/manifest.json
 verifiers/              Final-state checks for the 18 applications
 skills/                 Frozen CLI skill conditions
 scripts/                Validation, skill installation, and result aggregation
-docs/reproduction.md    Protocol and environment preparation
 ```
 
 ## Third-party components
