@@ -15,7 +15,7 @@ These values describe the implementation, including settings not enumerated in t
 | Desktop | 1920 × 1080 | Same desktop applications and task initial files |
 | Model screenshot | 1280 × 720 | CLI agent's native observations |
 | History images | 5 per model call, including current image | Native CLI-agent context |
-| Reasoning tier | `medium` where supported; Kimi maps it to `high` | `medium` |
+| Reasoning tier | `medium` where supported | `medium` |
 | Output budget | 32,768 tokens per GUI model call | Native CLI-agent settings |
 | Agent limit | 40 model interaction rounds | 200-second task-execution timeout |
 | Task changes | Visible GUI operations only | CLI-Anything skill workflows only |
