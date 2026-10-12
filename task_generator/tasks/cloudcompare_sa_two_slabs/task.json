@@ -1,0 +1,39 @@
+{
+  "id": "cloudcompare_sa_two_slabs",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/city.ply in CloudCompare (800 points spread over 0..20 on every axis). Extract two slabs: all points with X <= 5, and all points with X >= 15 (any Y and Z). Merge the two slabs into a single cloud (nothing from 5 < X < 15) and save it as an ASCII PLY at /home/user/Documents/city_slabs.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "city.ply",
+        "sandbox_path": "/home/user/Documents/city.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/city_slabs.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/city_slabs.ply 414",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 414 points"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/city_slabs.ply x 19.5",
+      "key": "match",
+      "expected": true,
+      "description": "x extent >= 19.5"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/city_slabs.ply ascii",
+      "key": "match",
+      "expected": true,
+      "description": "PLY ascii"
+    }
+  ]
+}

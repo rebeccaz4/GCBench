@@ -1,0 +1,13 @@
+{
+  "source": "https://github.com/HKUDS/CLI-Anything",
+  "original_upstream_commit": "1bb1010de4911f5c970091feccc5f8fb13301b2b",
+  "commit_date": "2026-04-28T17:37:05Z",
+  "commit_subject": "fix(hub): compact footer analytics",
+  "observed_runtime_image": "gui-synth-env-desktop-with-claude:chatgpt-plus-ready",
+  "evidence_task": "freecad_cw_part_027",
+  "evidence_condition": "original CLI Sonnet 5",
+  "evidence_tool_use_id": "toolu_01MvnNKQPDUYByS6xJ9fPGXh",
+  "evidence_command": "cd /home/user/.claude/plugins/marketplaces/cli-anything && git log --oneline -10",
+  "evidence_output": "1bb1010 fix(hub): compact footer analytics",
+  "qualification": "Direct HEAD evidence from one original-condition trajectory; all 12 original run configs name the same image tag, without a recorded immutable image digest."
+}

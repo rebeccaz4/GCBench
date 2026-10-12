@@ -1,0 +1,33 @@
+{
+  "id": "zotero_gap_advanced_search_export_results",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Export every item whose 'Item Type' is exactly 'Book' (and no other items) as BibTeX to the exact path /home/user/Documents/books_only.bib. After export the file must exist, contain exactly 1 BibTeX entry, and that entry's title must contain 'Deep Learning'. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/books_only.bib",
+      "key": "exists",
+      "expected": true,
+      "description": "Export file exists"
+    },
+    {
+      "command": "check-bibtex-count /home/user/Documents/books_only.bib 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly one BibTeX entry"
+    },
+    {
+      "command": "check-bibtex-title /home/user/Documents/books_only.bib 'Deep Learning'",
+      "key": "contains",
+      "expected": true,
+      "description": "Entry title contains 'Deep Learning'"
+    }
+  ]
+}

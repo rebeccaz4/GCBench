@@ -1,0 +1,73 @@
+{
+  "id": "obsidian_enable_core_plugins",
+  "app": "obsidian",
+  "task": "Open Obsidian with the vault at /home/user/Documents/PluginVault. Enable the following core plugins:\n\n1. Graph view (graph)\n2. Tag pane (tag-pane)\n3. Daily notes (daily-notes)\n4. Templates (templates)\n5. Outline (outline)\n6. Word count (word-count)\n7. Backlinks (backlink)\n\nAfter configuring plugins, create a note 'PluginConfig.md' with body:\n\n# Plugin Configuration\n## Enabled Core Plugins\n- Graph view\n- Tag pane\n- Daily notes\n- Templates\n- Outline\n- Word count\n- Backlinks\n#config #plugins",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/PluginVault/.obsidian/app.json"
+      },
+      {
+        "filename": "core-plugins.json",
+        "sandbox_path": "/home/user/Documents/PluginVault/.obsidian/core-plugins.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-plugin-enabled /home/user/Documents/PluginVault graph core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Graph view enabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/PluginVault tag-pane core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Tag pane enabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/PluginVault daily-notes core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Daily notes enabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/PluginVault templates core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Templates enabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/PluginVault outline core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Outline enabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/PluginVault word-count core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Word count enabled"
+    },
+    {
+      "command": "check-plugin-enabled /home/user/Documents/PluginVault backlink core",
+      "key": "enabled",
+      "expected": true,
+      "description": "Backlinks enabled"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/PluginVault PluginConfig",
+      "key": "exists",
+      "expected": true,
+      "description": "PluginConfig note exists"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/PluginVault PluginConfig plugins",
+      "key": "has_tag",
+      "expected": true,
+      "description": "PluginConfig has #plugins tag"
+    }
+  ]
+}

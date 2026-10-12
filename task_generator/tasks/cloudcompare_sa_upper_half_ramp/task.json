@@ -1,0 +1,51 @@
+{
+  "id": "cloudcompare_sa_upper_half_ramp",
+  "app": "cloudcompare",
+  "task": "Open /home/user/Documents/plain.ply in CloudCompare (350 points around the origin, no color). Keep only the points with Z >= 0, color them by height with a height ramp (Z), then scale the result uniformly by 2 about the origin (0, 0, 0). Save it as a binary little-endian PLY with colors at /home/user/Documents/plain_upper.ply.",
+  "env": {
+    "files": [
+      {
+        "filename": "plain.ply",
+        "sandbox_path": "/home/user/Documents/plain.ply"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/plain_upper.ply",
+      "key": "exists",
+      "expected": true,
+      "description": "output exists"
+    },
+    {
+      "command": "check-point-count /home/user/Documents/plain_upper.ply 176",
+      "key": "match",
+      "expected": true,
+      "description": "exactly 176 points"
+    },
+    {
+      "command": "check-bbox-within /home/user/Documents/plain_upper.ply -10.01 -10.01 -0.01 10.01 10.01 10.01",
+      "key": "match",
+      "expected": true,
+      "description": "bounding box after the transformation"
+    },
+    {
+      "command": "check-bbox-min-extent /home/user/Documents/plain_upper.ply z 9.5",
+      "key": "match",
+      "expected": true,
+      "description": "z extent >= 9.5"
+    },
+    {
+      "command": "check-has-color /home/user/Documents/plain_upper.ply",
+      "key": "has_color",
+      "expected": true,
+      "description": "colors saved"
+    },
+    {
+      "command": "check-ply-format /home/user/Documents/plain_upper.ply binary_little_endian",
+      "key": "match",
+      "expected": true,
+      "description": "PLY binary_little_endian"
+    }
+  ]
+}

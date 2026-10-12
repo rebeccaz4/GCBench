@@ -1,0 +1,46 @@
+{
+  "id": "obsidian_appearance_setup",
+  "app": "obsidian",
+  "task": "Open Obsidian with the vault at /home/user/Documents/ThemeVault. Configure the appearance:\n\nChange the base theme to light mode (set theme to 'moonstone'), set the base font size to 18, and set the accent color to '#E11D48' (a rose color).\n\nThen create a note called 'ThemeTest.md' in the vault root with body:\n\n# Theme Test\nThis note verifies the theme was changed.\nThe editor should now show light mode with larger text.\n#test #appearance",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/ThemeVault/.obsidian/app.json"
+      },
+      {
+        "filename": "appearance.json",
+        "sandbox_path": "/home/user/Documents/ThemeVault/.obsidian/appearance.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "appearance /home/user/Documents/ThemeVault theme",
+      "eval": "result.get('value') == 'moonstone'",
+      "description": "Theme set to moonstone (light)"
+    },
+    {
+      "command": "appearance /home/user/Documents/ThemeVault baseFontSize",
+      "eval": "result.get('value') == 18",
+      "description": "Font size set to 18"
+    },
+    {
+      "command": "appearance /home/user/Documents/ThemeVault accentColor",
+      "eval": "(result.get('value') or '').lower() == '#e11d48'",
+      "description": "Accent color set to rose (#E11D48, case-insensitive)"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/ThemeVault ThemeTest",
+      "key": "exists",
+      "expected": true,
+      "description": "ThemeTest note exists"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/ThemeVault ThemeTest appearance",
+      "key": "has_tag",
+      "expected": true,
+      "description": "ThemeTest has #appearance tag"
+    }
+  ]
+}

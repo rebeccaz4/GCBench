@@ -1,0 +1,21 @@
+{
+  "id": "writer_cg_10c36365",
+  "app": "libreoffice_writer",
+  "task": "Configure the document with different headers and footers for the first page, odd pages, and even pages. The first page header should say 'CONFIDENTIAL DRAFT', odd page headers should show the document title right-aligned, and even page headers should show the date left-aligned. The file to work on is /home/user/wrpara_033.docx.",
+  "env": {
+    "files": [
+      {
+        "filename": "wrpara_033.docx",
+        "sandbox_path": "/home/user/wrpara_033.docx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "python-reward 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",
+      "key": "passed",
+      "expected": true,
+      "description": "CUA-Gym reward script reaches 1.0 (all components)"
+    }
+  ]
+}

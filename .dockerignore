@@ -1,0 +1,6 @@
+.git
+.env
+.venv
+evaluation/runs
+__pycache__
+*.sif

@@ -1,0 +1,15 @@
+{
+  "task_id": "writer_cg_ee7010dd",
+  "files": [
+    {
+      "filename": "legal_brief_style_manual.docx",
+      "sandbox_path": "/home/user/Documents/legal_brief_style_manual.docx",
+      "type": "docx"
+    },
+    {
+      "filename": "motion_draft.docx",
+      "sandbox_path": "/home/user/Documents/motion_draft.docx",
+      "type": "docx"
+    }
+  ]
+}

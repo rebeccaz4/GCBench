@@ -1,0 +1,21 @@
+{
+  "id": "impress_osw_ac9bb6cb",
+  "app": "libreoffice_impress",
+  "task": "I am preparing a PPT in Libreoffice impress. The slide number is barely visible to me. Please help me change the color of the slide number to red? The presentation is /home/user/Desktop/saa-format-guide.pptx; save it in place.",
+  "env": {
+    "files": [
+      {
+        "filename": "saa-format-guide.pptx",
+        "sandbox_path": "/home/user/Desktop/saa-format-guide.pptx"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "osworld-check eNolTkkOwyAM/Erkc1PuPfcXVYQocZYmwcjYUiTE3wvJzbN5JoNf0G8JXt0nw6TB1+vmbHQz2qDHF9l62okTPDpgTLpLc5mFDjSakM0b0yYUTXKun4gPJ/2s64jPGOVsKYqyUmg1uVSIZ0QvODYMrDteClwt7TVXqZQyVKun8GuUCyPcSWK59g7lD14GP+U=",
+      "key": "passed",
+      "expected": true,
+      "description": "OSWorld V1 evaluator(s): check_page_number_colors"
+    }
+  ]
+}

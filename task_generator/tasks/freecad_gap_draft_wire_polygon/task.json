@@ -1,0 +1,45 @@
+{
+  "id": "freecad_gap_draft_wire_polygon",
+  "app": "freecad",
+  "task": "FreeCAD is open with /home/user/Documents/draft_start.FCStd (empty document). Create a closed Draft Wire named exactly 'HexPath' whose 6 vertices form a regular hexagon on the XY plane, centered at the origin, with circumradius 50 mm (the first vertex at (50, 0, 0); vertices spaced 60 degrees apart). Then create a Draft Circle named exactly 'CenterHole' on the XY plane, centered at the origin, with radius 15 mm. Save the file.",
+  "env": {
+    "files": [
+      {
+        "filename": "draft_start.FCStd",
+        "sandbox_path": "/home/user/Documents/draft_start.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/Documents/draft_start.FCStd",
+      "key": "exists",
+      "expected": true,
+      "description": "File exists"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/draft_start.FCStd HexPath",
+      "key": "exists",
+      "expected": true,
+      "description": "HexPath exists"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/draft_start.FCStd HexPath Closed true",
+      "key": "match",
+      "expected": true,
+      "description": "HexPath is closed"
+    },
+    {
+      "command": "check-object-exists /home/user/Documents/draft_start.FCStd CenterHole",
+      "key": "exists",
+      "expected": true,
+      "description": "CenterHole exists"
+    },
+    {
+      "command": "check-parameter-value /home/user/Documents/draft_start.FCStd CenterHole Radius 15",
+      "key": "match",
+      "expected": true,
+      "description": "CenterHole Radius = 15"
+    }
+  ]
+}

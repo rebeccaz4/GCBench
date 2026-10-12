@@ -1,0 +1,99 @@
+{
+  "id": "obs_hide_but_keep_sources",
+  "app": "obs",
+  "task": "The scene collection already contains a single scene named 'Live' with 6 sources, all currently visible: 'Camera A', 'Camera B', 'Screen', 'Title Text', 'Logo', 'Alert Box'. Your task is to hide (set visibility off for) exactly 3 sources while leaving them in the scene, and leave the other 3 visible. Rules: 1. Hide these 3 sources: 'Camera B', 'Logo', 'Alert Box'. 2. Keep these 3 sources visible: 'Camera A', 'Screen', 'Title Text'. 3. Do NOT delete any source. All 6 sources must still be in the 'Live' scene. 4. Do NOT add, rename, or move any source. Do NOT create or delete any scene — the collection must still have exactly 1 scene named 'Live'. 5. Close OBS when you are done so the scene collection is saved to disk.",
+  "env": {
+    "files": [
+      {
+        "filename": "scene_collection.json",
+        "sandbox_path": "/home/user/.config/obs-studio/basic/scenes/Untitled.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-scene-exists Live",
+      "key": "exists",
+      "expected": true,
+      "description": "Scene 'Live' exists"
+    },
+    {
+      "command": "check-scene-count 1",
+      "key": "match",
+      "expected": true,
+      "description": "Exactly 1 scene"
+    },
+    {
+      "command": "check-source-in-scene 'Camera A' Live",
+      "key": "exists",
+      "expected": true,
+      "description": "'Camera A' still in 'Live'"
+    },
+    {
+      "command": "check-source-in-scene 'Camera B' Live",
+      "key": "exists",
+      "expected": true,
+      "description": "'Camera B' still in 'Live'"
+    },
+    {
+      "command": "check-source-in-scene Screen Live",
+      "key": "exists",
+      "expected": true,
+      "description": "'Screen' still in 'Live'"
+    },
+    {
+      "command": "check-source-in-scene 'Title Text' Live",
+      "key": "exists",
+      "expected": true,
+      "description": "'Title Text' still in 'Live'"
+    },
+    {
+      "command": "check-source-in-scene Logo Live",
+      "key": "exists",
+      "expected": true,
+      "description": "'Logo' still in 'Live'"
+    },
+    {
+      "command": "check-source-in-scene 'Alert Box' Live",
+      "key": "exists",
+      "expected": true,
+      "description": "'Alert Box' still in 'Live'"
+    },
+    {
+      "command": "check-source-visible 'Camera A'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Camera A' visible"
+    },
+    {
+      "command": "check-source-visible Screen",
+      "key": "visible",
+      "expected": true,
+      "description": "'Screen' visible"
+    },
+    {
+      "command": "check-source-visible 'Title Text'",
+      "key": "visible",
+      "expected": true,
+      "description": "'Title Text' visible"
+    },
+    {
+      "command": "check-source-visible 'Camera B'",
+      "key": "visible",
+      "expected": false,
+      "description": "'Camera B' hidden"
+    },
+    {
+      "command": "check-source-visible Logo",
+      "key": "visible",
+      "expected": false,
+      "description": "'Logo' hidden"
+    },
+    {
+      "command": "check-source-visible 'Alert Box'",
+      "key": "visible",
+      "expected": false,
+      "description": "'Alert Box' hidden"
+    }
+  ]
+}

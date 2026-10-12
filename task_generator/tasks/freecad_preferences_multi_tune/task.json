@@ -1,0 +1,39 @@
+{
+  "id": "freecad_preferences_multi_tune",
+  "app": "freecad",
+  "task": "Configure multiple FreeCAD preferences in FreeCAD's user.cfg (/root/.FreeCAD/user.cfg): (1) Set the Style sheet to exactly 'Dark-blue', (2) Ensure auto-save is enabled and set its interval to 180 seconds (3 minutes), (3) Set the User system to 'Imperial from SI (in, in/s^2)' which corresponds to schema index 2.",
+  "env": {
+    "files": [
+      {
+        "filename": "empty_prefs.FCStd",
+        "sandbox_path": "/home/user/Documents/empty_prefs.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-preference BaseApp/Preferences/MainWindow/StyleSheet Dark-blue.qss",
+      "key": "match",
+      "expected": true,
+      "description": "Style sheet set to Dark-blue"
+    },
+    {
+      "command": "check-preference BaseApp/Preferences/Document/AutoSaveEnabled true",
+      "key": "match",
+      "expected": true,
+      "description": "Auto-save enabled"
+    },
+    {
+      "command": "check-preference BaseApp/Preferences/Document/AutoSaveTimeout 3",
+      "key": "match",
+      "expected": true,
+      "description": "Auto-save interval == 3 minutes (180 seconds)"
+    },
+    {
+      "command": "check-preference BaseApp/Preferences/Units/UserSchema 2",
+      "key": "match",
+      "expected": true,
+      "description": "Units schema set to 2 (Imperial from SI)"
+    }
+  ]
+}

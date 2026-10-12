@@ -1,0 +1,33 @@
+{
+  "id": "zotero_add_author_to_survey",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. The item titled 'A Survey of RL Methods' currently has a single author, Sutton. Add a SECOND author with first name exactly 'Andrew' and last name exactly 'Barto'. Make sure the existing Sutton author remains. After saving, the item must have exactly 2 creators total: Sutton and Barto. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-item-creator 'Survey of RL Methods' Barto",
+      "key": "has_creator",
+      "expected": true,
+      "description": "Survey has author Barto"
+    },
+    {
+      "command": "check-item-creator 'Survey of RL Methods' Sutton",
+      "key": "has_creator",
+      "expected": true,
+      "description": "Survey still has author Sutton"
+    },
+    {
+      "command": "check-item-creator-count 'Survey of RL Methods' 2",
+      "key": "match",
+      "expected": true,
+      "description": "Survey has exactly 2 creators"
+    }
+  ]
+}

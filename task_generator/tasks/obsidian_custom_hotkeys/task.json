@@ -1,0 +1,59 @@
+{
+  "id": "obsidian_custom_hotkeys",
+  "app": "obsidian",
+  "task": "Open Obsidian with the vault at /home/user/Documents/HotkeyVault. Set up the following custom keyboard shortcuts:\n\n1. Set 'Toggle bold' (editor:toggle-bold) to Ctrl+Alt+B\n2. Set 'Toggle italic' (editor:toggle-italics) to Ctrl+Alt+I\n3. Set 'Toggle strikethrough' (editor:toggle-strikethrough) to Ctrl+Shift+X\n4. Set 'Toggle highlight' (editor:toggle-highlight) to Ctrl+Shift+H\n5. Set 'Insert template' (insert-template) to Ctrl+T\n\nAfter setting all hotkeys, create a note 'HotkeyCheatsheet.md' with body:\n\n# Hotkey Cheatsheet\n## Formatting\n- Bold: Ctrl+Alt+B\n- Italic: Ctrl+Alt+I\n- Strikethrough: Ctrl+Shift+X\n- Highlight: Ctrl+Shift+H\n## Templates\n- Insert: Ctrl+T\n#hotkeys #cheatsheet",
+  "env": {
+    "files": [
+      {
+        "filename": "app.json",
+        "sandbox_path": "/home/user/Documents/HotkeyVault/.obsidian/app.json"
+      },
+      {
+        "filename": "hotkeys.json",
+        "sandbox_path": "/home/user/Documents/HotkeyVault/.obsidian/hotkeys.json"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault editor:toggle-bold",
+      "description": "Bold hotkey set to Ctrl+Alt+B",
+      "eval": "any(sorted(b.get('modifiers') or []) == ['Alt', 'Mod'] and str(b.get('key', '')).upper() == 'B' for b in (result.get('bindings') or []))"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault editor:toggle-italics",
+      "description": "Italic hotkey set to Ctrl+Alt+I",
+      "eval": "any(sorted(b.get('modifiers') or []) == ['Alt', 'Mod'] and str(b.get('key', '')).upper() == 'I' for b in (result.get('bindings') or []))"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault editor:toggle-strikethrough",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Strikethrough hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault editor:toggle-highlight",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Highlight hotkey set"
+    },
+    {
+      "command": "check-hotkey /home/user/Documents/HotkeyVault insert-template",
+      "key": "has_hotkey",
+      "expected": true,
+      "description": "Insert template hotkey set"
+    },
+    {
+      "command": "check-note-exists /home/user/Documents/HotkeyVault HotkeyCheatsheet",
+      "key": "exists",
+      "expected": true,
+      "description": "HotkeyCheatsheet note exists"
+    },
+    {
+      "command": "check-note-has-tag /home/user/Documents/HotkeyVault HotkeyCheatsheet hotkeys",
+      "key": "has_tag",
+      "expected": true,
+      "description": "HotkeyCheatsheet has #hotkeys tag"
+    }
+  ]
+}

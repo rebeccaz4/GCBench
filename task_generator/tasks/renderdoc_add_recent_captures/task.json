@@ -1,0 +1,59 @@
+{
+  "id": "renderdoc_add_recent_captures",
+  "app": "renderdoc",
+  "task": "Edit UI.config: set RecentCaptureFiles to triangle.rdc and draw_call.rdc, set DefaultCaptureSaveDirectory to /home/user/captures. Preserve rdocConfigData=1.",
+  "env": {
+    "files": [
+      {
+        "filename": "UI.config",
+        "sandbox_path": "/home/user/.local/share/qrenderdoc/UI.config"
+      },
+      {
+        "filename": "triangle.rdc",
+        "sandbox_path": "/home/user/captures/triangle.rdc"
+      },
+      {
+        "filename": "draw_call.rdc",
+        "sandbox_path": "/home/user/captures/draw_call.rdc"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-rdc-valid /home/user/captures/triangle.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "triangle.rdc is still a valid capture"
+    },
+    {
+      "command": "check-rdc-valid /home/user/captures/draw_call.rdc",
+      "key": "valid",
+      "expected": true,
+      "description": "draw_call.rdc is still a valid capture"
+    },
+    {
+      "command": "check-setting rdocConfigData 1",
+      "key": "match",
+      "expected": true,
+      "description": "rdocConfigData marker preserved"
+    },
+    {
+      "command": "check-recent-capture /home/user/captures/triangle.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "triangle.rdc is in RecentCaptureFiles"
+    },
+    {
+      "command": "check-recent-capture /home/user/captures/draw_call.rdc",
+      "key": "found",
+      "expected": true,
+      "description": "draw_call.rdc is in RecentCaptureFiles"
+    },
+    {
+      "command": "check-setting DefaultCaptureSaveDirectory /home/user/captures",
+      "key": "match",
+      "expected": true,
+      "description": "DefaultCaptureSaveDirectory points at /home/user/captures"
+    }
+  ]
+}

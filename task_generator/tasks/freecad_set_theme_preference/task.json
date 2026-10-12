@@ -1,0 +1,27 @@
+{
+  "id": "freecad_set_theme_preference",
+  "app": "freecad",
+  "task": "Configure FreeCAD so that the style sheet is set to Dark-blue and the auto-save interval is set to 120 seconds (2 minutes). Ensure the changes are saved to FreeCAD's user.cfg (/root/.FreeCAD/user.cfg) while preserving unrelated settings.",
+  "env": {
+    "files": [
+      {
+        "filename": "empty.FCStd",
+        "sandbox_path": "/home/user/Documents/empty.FCStd"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-preference BaseApp/Preferences/MainWindow/StyleSheet Dark-blue.qss",
+      "key": "match",
+      "expected": true,
+      "description": "Style sheet set to Dark-blue"
+    },
+    {
+      "command": "check-preference BaseApp/Preferences/Document/AutoSaveTimeout 2",
+      "key": "match",
+      "expected": true,
+      "description": "Auto-save interval == 2 minutes (120 seconds)"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "audacity_sa_label_regions",
+  "app": "audacity",
+  "task": "Audacity is open with /home/user/Music/podcast.wav loaded (a 12-second recording). Add a label track with two region labels: 'intro' covering 0.0-3.0 s and 'outro' covering 9.0-12.0 s. Save the project as /home/user/Music/podcast.aup and export the labels to the text file /home/user/Music/podcast_labels.txt.",
+  "env": {
+    "files": [
+      {
+        "filename": "podcast.wav",
+        "sandbox_path": "/home/user/Music/podcast.wav"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-valid-aup /home/user/Music/podcast.aup",
+      "key": "valid",
+      "expected": true,
+      "description": "project saved"
+    },
+    {
+      "command": "check-labeltrack-count /home/user/Music/podcast.aup 1",
+      "key": "match",
+      "expected": true,
+      "description": "one label track"
+    },
+    {
+      "command": "check-label-count /home/user/Music/podcast.aup 2",
+      "key": "match",
+      "expected": true,
+      "description": "two labels"
+    },
+    {
+      "command": "labels /home/user/Music/podcast.aup",
+      "eval": "any(l['title'] == 'intro' and abs(float(l['t'])) <= 0.02 and abs(float(l['t1']) - 3.0) <= 0.02 for l in result)",
+      "description": "region 'intro' 0-3 s"
+    },
+    {
+      "command": "labels /home/user/Music/podcast.aup",
+      "eval": "any(l['title'] == 'outro' and abs(float(l['t']) - 9.0) <= 0.02 and abs(float(l['t1']) - 12.0) <= 0.02 for l in result)",
+      "description": "region 'outro' 9-12 s"
+    },
+    {
+      "command": "check-file-size-min /home/user/Music/podcast_labels.txt 20",
+      "key": "match",
+      "expected": true,
+      "description": "label file exported (two region lines; 20 bytes = shortest start/end/title lines)"
+    }
+  ]
+}

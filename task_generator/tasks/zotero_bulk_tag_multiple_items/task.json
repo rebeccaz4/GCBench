@@ -1,0 +1,39 @@
+{
+  "id": "zotero_bulk_tag_multiple_items",
+  "app": "zotero",
+  "task": "Zotero is installed and a pre-seeded library is at /home/user/Zotero/zotero.sqlite. Launch Zotero. Perform two tagging operations: (1) Create a new tag named exactly 'transformer-arch' (lowercase, with hyphen) and add it to BOTH 'Attention Is All You Need' and 'BERT: Pre-training of Deep Bidirectional Transformers'. (2) Add the existing tag 'important' to the BERT item. Leave Zotero running.",
+  "env": {
+    "files": [
+      {
+        "filename": "zotero.sqlite",
+        "sandbox_path": "/home/user/Zotero/zotero.sqlite"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-tag-exists transformer-arch",
+      "key": "exists",
+      "expected": true,
+      "description": "Tag 'transformer-arch' exists"
+    },
+    {
+      "command": "check-item-tag 'Attention Is All You Need' transformer-arch",
+      "key": "has_tag",
+      "expected": true,
+      "description": "Attention has transformer-arch tag"
+    },
+    {
+      "command": "check-item-tag 'BERT: Pre-training' transformer-arch",
+      "key": "has_tag",
+      "expected": true,
+      "description": "BERT has transformer-arch tag"
+    },
+    {
+      "command": "check-item-tag 'BERT: Pre-training' important",
+      "key": "has_tag",
+      "expected": true,
+      "description": "BERT has important tag"
+    }
+  ]
+}

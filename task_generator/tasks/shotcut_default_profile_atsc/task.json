@@ -1,0 +1,27 @@
+{
+  "id": "shotcut_default_profile_atsc",
+  "app": "shotcut",
+  "task": "Shotcut is open with a placeholder project /home/user/Documents/empty.mlt. Your task is to set Shotcut's default Video Mode to 'HD 1080p 30 fps'.\n\nShotcut stores this setting in ~/.config/Meltytech/Shotcut.conf.",
+  "env": {
+    "files": [
+      {
+        "filename": "empty.mlt",
+        "sandbox_path": "/home/user/Documents/empty.mlt"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-file-exists /home/user/.config/Meltytech/Shotcut.conf",
+      "key": "exists",
+      "expected": true,
+      "description": "Shotcut configuration file exists"
+    },
+    {
+      "command": "check-config-value player profile atsc_1080p_30",
+      "key": "match",
+      "expected": true,
+      "description": "player.profile equals 'atsc_1080p_30'"
+    }
+  ]
+}

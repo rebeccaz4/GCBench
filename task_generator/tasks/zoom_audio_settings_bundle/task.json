@@ -1,0 +1,39 @@
+{
+  "id": "zoom_audio_settings_bundle",
+  "app": "zoom",
+  "task": "A baseline Zoom config file exists at /home/user/.config/zoomus.conf. MicrophoneLevel is currently 50 and SpeakerLevel is currently 50. Update BOTH keys: set MicrophoneLevel to exactly 80 and SpeakerLevel to exactly 90. Save the file in-place at /home/user/.config/zoomus.conf. Do not modify any other keys or sections.",
+  "env": {
+    "files": [
+      {
+        "filename": "zoomus.conf",
+        "sandbox_path": "/home/user/.config/zoomus.conf"
+      }
+    ]
+  },
+  "verification": [
+    {
+      "command": "check-config-exists",
+      "key": "exists",
+      "expected": true,
+      "description": "zoomus.conf exists"
+    },
+    {
+      "command": "check-config Audio MicrophoneLevel 80",
+      "key": "match",
+      "expected": true,
+      "description": "[Audio]MicrophoneLevel == 80"
+    },
+    {
+      "command": "check-config Audio SpeakerLevel 90",
+      "key": "match",
+      "expected": true,
+      "description": "[Audio]SpeakerLevel == 90"
+    },
+    {
+      "command": "check-config Audio AudioDevice default",
+      "key": "match",
+      "expected": true,
+      "description": "AudioDevice left untouched"
+    }
+  ]
+}
